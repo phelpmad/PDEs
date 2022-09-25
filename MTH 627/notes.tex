@@ -1,0 +1,59 @@
+\documentclass{article}
+
+\usepackage{preamble}
+
+\title{MTH 627: Advanced PDEs notes}
+\author{Madison Phelps \thanks{Oregon State University, phelpmad@oregonstate.edu}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{empty}
+
+\break
+
+\tableofcontents
+
+\thispagestyle{empty}
+
+\break
+
+\section{9.21.22}
+
+Hello.
+
+\begin{definition}[Semi-norm] Let $V$ be a vector space and define $p:V\to \R$. Then $p$ is a semi-norm if
+	\begin{enumerate}
+		\item $p$ has absolute homogeneity; $p(cx) = |c| p(x)$ for all $x\in V$ and $c\in\R$, and
+		\item $p$ has the triangle inequality; $p(x+y) \leq p(x) + p(y)$ for all $x,y\in V$.
+	\end{enumerate}
+\end{definition}
+
+
+
+\begin{property}[(semi-norms)] If $p: V\to \R$ is a semi-norm, then
+	\begin{enumerate}
+		\item $p$ has the reverse triangle inequality; $|p(x)-p(y)|\leq p(x-y)$, for all $x,y\in V$. 
+		
+			\begin{solution}{
+				Let $x,y\in V$ and suppose $p$ is a semi-norm on $V$. Using the triangle inequality we compute,
+					\[p(x) = p(x-y+y) \leq p(x-y)+p(y)\]
+					\[p(y) = p(y-x+x) \leq p(x-y) + p(x),\]
+				meaning that
+					\[p(x) - p(y) \leq p(x-y) \text{ and } p(y)-p(x) \leq p(x-y)\]
+				which results in 
+					\[-p(x-y) \leq p(x)-p(y) \leq p(x-y)\]
+				by multiplying the second inequality by $-1$. Therefore,  $|p(x)-p(y)|\leq p(x-y)$, for all $x,y\in V$.
+			}\end{solution}	
+				
+		\item $p$ is non-negative $p(x) \geq 0$ for all $x\in V$
+	\end{enumerate}
+	
+	Hello.
+\end{property}
+
+Hello.
+
+\end{document}
