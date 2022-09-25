@@ -1,0 +1,10 @@
+*.md.bak
+*.html
+*.DS_Store
+*.log
+*.out
+*.gz
+*.aux
+*.synctex
+*.synctex(busy)
+*.toc
