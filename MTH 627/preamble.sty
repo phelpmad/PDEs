@@ -24,11 +24,12 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{12pt}
 
+% custom packages created by me:
+\usepackage{boxes}
 
 % general packages:
 \usepackage{verbatim}
 \usepackage{enumitem}
-\setlist[enumerate]{topsep=0pt}
 \usepackage{soul}
 \usepackage{float}
 \usepackage{framed}
@@ -38,6 +39,17 @@
 \usepackage{comment}
 \usepackage[toc]{appendix}
 \usepackage{setspace}
+\usepackage{scrextend}% use to addmargin for indenting answers
+
+% stupid enumerate fix
+\usepackage{paralist}
+	\let\enumerate\compactenum
+	\let\endenumerate\endcompactenum
+	\pltopsep=-6pt
+	\plitemsep=3pt
+	\plparsep=3pt
+	\setdefaultenum{\bfseries (1)}
+		{\bfseries (a)}{}{}
 
 
 % math packages:
@@ -92,25 +104,44 @@
 \bibliographystyle{plain}
 
 % environments:
-\theoremstyle{definition}
+\newtheoremstyle{basic}
+  {15pt} % Space above
+  {} % Space below
+  {} % Body font
+  {} % Indent amount
+  {\bfseries} % Theorem head font
+  {.} % Punctuation after theorem head
+  {.5em} % Space after theorem head
+  {} % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{basic}
 \newtheorem{theorem}{Theorem}
-%\numberwithin{theorem}{subsection}
 
-\theoremstyle{definition}
+\theoremstyle{basic}
 \newtheorem{definition}{Definition}
-%\numberwithin{definition}{subsection}
 
-\theoremstyle{definition} %exercise
+\theoremstyle{basic}
 \newtheorem{problemdef}{Problem}
 \newenvironment{problem}[1] %number of exercise
     {\renewcommand\theproblemdef{#1}\problemdef}
     {\endproblemdef}
     
-\theoremstyle{definition} %exercise
+\theoremstyle{basic}
 \newtheorem{property}{Property}
+
+\newenvironment{solution}[1]
+{ % begin code
+	\begin{addmargin}[2em]{0em}
+		\begin{myDoubleBox}
+			\begin{minipage}{\linewidth} \textbf{Solution.} \par \ignorespaces
+			#1 \ignorespaces
+}{ % end code
+	\end{minipage}\end{myDoubleBox}\end{addmargin}
+}
 
 % custom comments for editing purposes
 \selectcolormodel{HTML}
 \definecolor{myBlue}{HTML}{7099c2}
+\definecolor{myBurntOrange}{HTML}{9c4634}
 \newcommand{\mphc}[1]{{\color{myBlue} #1}}
 

@@ -1,0 +1,16 @@
+\ProvidesPackage{boxes}
+
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myDoubleBox}[1][]{%
+  width = 0.95\linewidth, 
+  enhanced jigsaw, % allows double border
+  sharp corners,
+  opacityback=0.4, % changed opacity of backgound
+  borderline={.75pt}{-2pt}{black}, % outside border color/size/sep
+  colframe=black, % inner border color
+  boxrule=0.75pt,
+  enlarge top by=1em,
+  enlarge bottom by=0.5em,
+  #1
+}
