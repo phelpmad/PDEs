@@ -1,0 +1,91 @@
+\documentclass[12pt]{amsart}
+\usepackage{graphicx,url,xcolor}
+%
+\usepackage{fullpage} % changes the margin
+\usepackage[normalem]{ulem} % gives fancy underline 
+\usepackage{enumerate} % extra easy options to customize lists
+% Listings and such is useful for numerical analysis codes
+
+\usepackage{comment,framed} % less common but useful
+% Your macros: you can also keep them in a separate file
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\abs}[1]{\mid\!#1\!\mid}
+\newcommand{\norm}[2]{\mid\!\mid\! #1\!\mid\!\mid\!_{#2}}
+\newcommand{\eqdef}{:=}
+\newcommand{\eps}{\varepsilon}
+%
+\newcommand{\mpcomment}[1]{{\color{red}\bf[MP: #1]}}
+%
+
+%%
+%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%% HEADER
+\noindent
+%%
+\textbf{MTH 627 (Prof.~M.~Peszynska) Problem set 1. } \hfill \textbf{Madison Phelps}\\
+\hfill Date: \today\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\medskip
+\hrule
+\hrule
+\medskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEMS
+\noindent
+\textcolor{red}{Include  proper citations including online resources as in  \cite[Chap.I, Theorem 1.1]{Showalter}. 
+} 
+\\
+\textcolor{blue}{For other results, state these.} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\medskip
+\hrule
+\hrule
+\medskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Problem 1}
+Solve a modification of I.2.2: consider 
+%%
+\begin{eqnarray}
+p(x)=p_1(x_1)+5p_2(x_2), q(x)=\max(10 p_1(x_1),p_2(x_2))
+\end{eqnarray}
+%%
+defined for $V=V_1 \times V_2 \ni x=(x_1,x_2)$. Are $p(x),q(x)$ seminorms on $V$. If yes, which is stronger? (Provide appropriate scaling constants). Under what assumptions are they norms?  
+%
+\\
+\medskip
+\hrule
+\medskip
+%
+\noindent{\bf Solution:}
+%%%%%%%%%%%%%%
+
+Assume that $p_1$ and $p_2$ are seminorms on $V$ (because otherwise we cannot show that $p(x)$ and $q(x)$ are seminorms). Then, we compute
+	\begin{align*}
+		
+	\end{align*} 
+
+%%%%%%%%%%%%%%
+\medskip
+\hrule
+\hrule
+\medskip
+%%
+\subsection*{Problem 2}
+Solve I.4.3.
+\\
+\medskip
+\hrule
+\medskip
+%
+\noindent{\bf Solution:}
+%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{9}
+\bibitem{Showalter} Ralph Showalter, \emph{Hilbert Space Methods in Partial Differentia;l Equations}, Dover, (2010)
+
+\bibitem{listings} CTAN archive of the LaTeX package {\tt listings} \url{https://ctan.org/pkg/listings}
+\end{thebibliography}
+
+\end{document}
