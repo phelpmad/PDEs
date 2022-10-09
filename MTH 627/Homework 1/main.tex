@@ -60,10 +60,38 @@ defined for $V=V_1 \times V_2 \ni x=(x_1,x_2)$. Are $p(x),q(x)$ seminorms on $V$
 \noindent{\bf Solution:}
 %%%%%%%%%%%%%%
 
-Assume that $p_1$ and $p_2$ are seminorms on $V$ (because otherwise we cannot show that $p(x)$ and $q(x)$ are seminorms). Then, we compute
+First, we show that $p(x)$ is a seminorm. Assume that $p_1$ and $p_2$ are seminorms on $V$. Then for any $x,y\in V$ we compute,		
+\begin{align*}
+		p(x+y) & = p_1(x_1+y_1)+5p_2(x_2+y_2)\\
+			   & \leq p_1(x_1) + p_1(y_1) + 5p_2(x_2) + 5p_2(y_2)\\
+			   & = p(x) + p(y)
+	\end{align*}
+and any scalar $\alpha\in \R$, 
+	\[p(\alpha x) = p_1(\alpha x_1) + 5p_2(\alpha x_2) = \alpha p(x).\]   
+So, $p$ has the triangle inequality and absolute homogeneity.\\
+
+Next, observe that 
+	\begin{equation} 10p_1(x_1) \leq \max( 10 p_1(x_1), p_2(x_2)) \; \text{and}\; p_2(x_2) \leq \max( 10 p_1(x_1), p_2(x_2)), 
+	\end{equation}
+	and similarly with $10p_1(y_1)$ and $p_2(y_2)$. Thus, for any $x,y\in V\times V$ we calculate 
 	\begin{align*}
-		
-	\end{align*} 
+		q(x+y) & = \max(10 p_1(x_1+y_1),p_2(x_2+y_2))\\
+			   & \leq \max(10 p_1(x_1)+10p_1(y_1),p_2(x_2)+p_2(y_2))\\
+			   & \leq \max(10 p_1(x_1),p_2(x_2)) + \max(10p_1(y_1),p_2(y_2))\\
+			   & = q(x) + q(y)
+	\end{align*}
+which is obtained by adding the inequalities above in (2) and using the triangle inequality of seminorms $p_i$ with $i = 1,2$. Also, for any scalar $\alpha$, 
+	\[q(\alpha x) = \max(10 p_1(\alpha x_1),p_2(\alpha x_2)) = 
+		\max(|\alpha| 10 p_1(x_1),|\alpha|p_2(x_2)) = |\alpha| q(x). \]
+Therefore, $p$ and $q$ are seminorms.\\
+
+The above seminorms are equivalent. Observe,
+	\[ q(x) = \max(10p_1(x_1), p_2(x_2))\leq 10p_1(x_1) + 50p_2(x_2) = 10p(x) \]
+and 
+	\[p(x) = p_1(x_1) + 5p_2(x_2) \leq \max(p_1(x_1),p_2(x_2)) + \max(50p_1(x_1),5p_2(x_2)) \leq 6q(x).\]
+
+If at least one of $p_i$ is a norm, then $q$ and $p$ are both norms. However, it could also be true that if the kernel of $p_1$ is of the form $(0,x_2)$ and  $p_2$ is of the form $(x_1,0)$ then the only element sent to 0 is $(0,0)$ for which we can conclude that $p$ and $q$ are norms.\\
+
 
 %%%%%%%%%%%%%%
 \medskip
@@ -81,6 +109,18 @@ Solve I.4.3.
 \noindent{\bf Solution:}
 %%%%%%%%%%%%%%
 
+$\implies$ Let $f\in V'$, then $f$ is continuous and limits are preserved by continuity. By the reverse triangle inequality,
+	\[| || x_n || - || x || | \leq || x_n - x || \to 0, \text{ as } n\to \infty\]
+meaning that $\lim_{n\to\infty} ||x_n|| = ||x||$. Therefore, if $\lim x_n = x$ in $V$ then $\lim || x_n || = || x || $ and $\lim f(x_n) = f(x) $ for all $f$ in the algebraic dual.\\
+
+$\impliedby$ We want to show that $|| x_n - x || \to 0$, as $n\to \infty$ which is equivalent to showing that $\lim || x_n - x ||^2 = 0$. Let $x_n$ be a sequence in $V$ such that $\lim || x_n || = || x || $ and $\lim f(x_n) = f(x) $ for all $f$ in the algebraic dual. Then, $f(\cdot) = ( \cdot, x)$ is a continuous linear functional and so, $f(x_n) = (x_n, x) \to (x, x) = || x || ^2$. Using this, we calculate
+	\begin{align*}
+		|| x_n - x || ^ 2 & = (x_n - x, x_n -x) \\
+				      & = (x_n, x_n) - 2(x_n, x) + (x,x)\\
+				      & = || x_n || ^2 - 2f(x_n) + || x|| ^2\\
+				      & \to || x || ^2 - 2||x||^2 + || x|| ^2 = 0,
+	\end{align*}
+as $n\to \infty$. Therefore, $\lim x_n = x$ in $V$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{thebibliography}{9}
 \bibitem{Showalter} Ralph Showalter, \emph{Hilbert Space Methods in Partial Differentia;l Equations}, Dover, (2010)
