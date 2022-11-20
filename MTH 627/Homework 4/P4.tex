@@ -1,0 +1,88 @@
+\documentclass[12pt]{amsart}
+\usepackage{graphicx,url,xcolor}
+%
+\usepackage{fullpage} % changes the margin
+\usepackage[normalem]{ulem} % gives fancy underline 
+\usepackage{enumerate} % extra easy options to customize lists
+% Listings and such is useful for numerical analysis codes
+
+\usepackage{comment,framed} % less common but useful
+% Your macros: you can also keep them in a separate file
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\abs}[1]{\mid\!#1\!\mid}
+\newcommand{\norm}[2]{\mid\!\mid\! #1\!\mid\!\mid\!_{#2}}
+\newcommand{\eqdef}{:=}
+\newcommand{\eps}{\varepsilon}
+%
+\newcommand{\mpcomment}[1]{{\color{red}\bf[MP: #1]}}
+%
+
+%%
+%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%% HEADER
+\noindent
+%%
+\textbf{MTH 627 (Prof.~M.~Peszynska) Problem set 4. } \hfill \textbf{Madison Phelps}\\
+\hfill Date: \today\\
+Collaborators: Tyler Fara\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\medskip
+\hrule
+\hrule
+\medskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEMS
+\noindent
+\textcolor{red}{Include  proper citations including online resources as in  \cite[Chap.I, Theorem 1.1]{Showalter}. 
+} 
+\\
+\textcolor{blue}{For other results, state these.} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\medskip
+\hrule
+\hrule
+\medskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Problem 1}
+Complete exercises from activity in class on Wednesday, 11/9/22 which asked for a solution $u$ and its finite element approximation $u_h$ for the homogeneous Dirichlet BVP on  $\Omega=(0,1)$ with $h=1/2$ and $f$ given as one of $= 1,sin(\pi x), \delta_{1/2}$.  Plot the solutions (by hand is OK but MATLAB is better), and calculate the $L^2,L^{\infty}$ and energy errors of the solution. (If integrals are difficult, use numerical integration, but describe how). 
+\\
+Discuss any interesting features you see by connecting these to theory developed in class. Was everything as you expected?  Was the error better or worse than you expected? 
+%
+\\
+\medskip
+\hrule
+\medskip
+%
+\noindent{\bf Solution:}
+%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%
+\medskip
+\hrule
+\hrule
+\medskip
+%%
+\subsection*{Problem 2}
+Let $u \in V=H_0^1(\Omega)$. Derive an error estimate for the $L^2$ projection $w$ of $u$ onto Galerkin linear finite element space $V_h$, defined as $(u-w,v_h)=0,\; \forall v_h \in V_h$. 
+\\
+Derive also an estimate for $v$, the elliptic projection of $u$  onto $V_h$ defined as $a(u-v,v_h)=0, \forall v_h \in V_h$. 
+\\
+\medskip
+\hrule
+\medskip
+%
+\noindent{\bf Solution:}
+%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{9}
+\bibitem{Showalter} Ralph Showalter, \emph{Hilbert Space Methods in Partial Differentia;l Equations}, Dover, (2010)
+
+\bibitem{listings} CTAN archive of the LaTeX package {\tt listings} \url{https://ctan.org/pkg/listings}
+\end{thebibliography}
+
+\end{document}
