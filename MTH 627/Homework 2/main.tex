@@ -1,0 +1,142 @@
+\documentclass[12pt]{amsart}
+\usepackage{graphicx,url,xcolor}
+\usepackage{fullpage}
+\usepackage[normalem]{ulem}
+\usepackage{enumerate}
+\usepackage{comment,framed}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\abs}[1]{\mid\!#1\!\mid}
+\newcommand{\norm}[2]{\mid\!\mid\! #1\!\mid\!\mid\!_{#2}}
+\newcommand{\eqdef}{:=}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\mpcomment}[1]{{\color{red}\bf[MP: #1]}}
+
+\begin{document}
+
+
+% HEADER
+%-----------------------------------------------------------
+\noindent
+\textbf{MTH 627 (Prof.~M.~Peszynska) Problem set 2. } \hfill \textbf{Madison Phelps}\\
+\hfill Date: \today\\
+\medskip \hrule \hrule \medskip
+
+
+% PROBLEM 1
+%----------------------------------------------------------
+\subsection*{Problem 1} 
+Consider the space of linear polynomials $V=\mathbf{P}_1(0,1)$, with the $L^2$ inner product. \\
+%
+(i) Is $V$ a Hilbert space? (be brief). \\
+%
+(ii) If possible, find the kernel, its orthogonal, and Riesz representer for the functionals $F(p)=\int_0^1 x p(x)dx$, and $G(p) = \int_0^1 g(x)p(x)dx$. (Identify sufficient assumptions on $g(\cdot)$ to make the problem meaningful). You can start with $G$, and then conclude the case of $F$ as a special case. Or warm-up with $F$, and do $G$ next. \\
+
+\medskip \hrule \medskip
+\noindent \textbf{Solution, part i:} Yes, because $V$ is an inner product space equipped with the $L^2$ inner product, and $V$ is finite which implies $V$ is complete, and so is Hilbert. 
+
+\bigskip
+\noindent{\bf Solution, part ii:} We wish that each $F$ and $G$ are linear functionals. For this to happen the following calculation must be well-defined
+	\[ G(ax+b) =  \int_0^1 g(x)(ax+b) dx = a \int_0^1 x g(x) dx + b \int_0^1 g(x) dx = a G(x) + b G(1)\]
+where $p(x) = ax +b$ represents an arbitrary linear polynomial in $V$. In particular, to make the problem meaningful we must ensure that $g$ is Lebesgue integrable on $(0,1)$ so that IBP is well-defined for this problem. Assuming this is true, $p\in $ Ker$(G)$ if and only if 
+	\[a G(x) + b G(1) = 0\]
+which implies that $b = -a\frac{G(x)}{G(1)}$ and the kernel of $G$ is any linear polynomial in the span of the linear polynomial given by
+	\[ p(x) = x - \frac{G(x)}{G(1)}\]
+where $G$ is defined in terms of a given $g$.\\
+
+Next, we find the orthogonal complement of its kernel and find that
+	\[ \int_0^1 (ax+b) (x - \frac{G(x)}{G(1)})dx = 0\]
+if and only if 
+	\[ b = \frac{a \left( -\frac{1}{3} +\frac{G(x)}{2G(1)}\right)}{\frac{1}{2} - \frac{G(x)}{G(1)}}\]
+which means that 
+	\[ \text{Ker}(G)^\perp = \text{span}\left(x -  \frac{\left( -\frac{1}{3} +\frac{G(x)}{2G(1)}\right)}{\frac{1}{2} - \frac{G(x)}{G(1)}}\right) = \text{span}\left( f(x) \right).\]
+By Reisz theorem, the Reisz representer for the functional $G$ is the unique element in the orthogonal complement of its kernel, that is, $f$ is the Reisz representer for $G$.\\
+
+Now if we take $g(x) = x$, the kernel of $F$ is given by
+\[ \text{Ker}(F) = \text{span}\left(x - \frac{F(x)}{F(1)}\right) = \text{span}\left( x - \frac{2}{3} \right).\]
+and its orthogonal complement 
+\[ \text{Ker}(F)^\perp = \text{span}\left(x -  \frac{\left( -\frac{1}{3} +\frac{F(x)}{2F(1)}\right)}{\frac{1}{2} - \frac{F(x)}{F(1)}}\right) = \text{span}\left( x - 0 \right) = \text{span}(x).\]
+Thus, the Reisz representer of $F$ is $f(x) = x$. 
+
+\medskip \hrule \hrule \medskip
+%---------------------------------------------------------
+
+
+% PROBLEM 2
+%---------------------------------------------------------
+\subsection*{Problem 2}
+Solve II.2.1. \\
+\medskip \hrule \medskip
+
+\noindent{\bf Solution:} Let  $u \in H^1_0(G)$ and $\varphi \in H^1(G)$ be an arbitrary test function, then we compute
+%
+\begin{align*}
+    (u, \phi)_{H^1(G)} &= \int_G u \cdot \varphi + \int_G \sum_{i = 1}^n \partial_i u \cdot \partial_i \varphi \\
+    &= \int_G u \cdot \varphi - \int \sum_{i=1}^n u \cdot \partial^2_i \varphi \\
+    &= \int_G u \cdot \varphi - \int u \sum_{i=1}^n \partial^2_i \varphi \\
+    &= \int_G u \cdot \varphi - \int_G u \Delta_n \varphi
+\end{align*}
+and have used the definition of the $H^1(G)$ inner product, the multidimensional laplacian and then used IBP with 
+	\[ u \cdot \partial_i \varphi \bigg\rvert_{\partial G} - \int_G u\cdot \partial_i^2 \varphi = - \int_G u\cdot \partial_i^2 \varphi\]
+after applying the boundary conditions of $u$ in $G$. Then, 
+	\[ (u, \phi)_{H^1(G)} = 0\]
+if and only if $\varphi = \Delta_n \varphi $.
+
+Applying the same thought process as above in one dimension, we seek a general solution to the ODE given by $\varphi'' + \varphi = 0$ whose solutions are in 
+	\begin{itemize}
+		\item $ H^1(0,1) $, which gives the solutions of $e^{-x}$ and $e^x$
+		\item $H^1(0,\infty)$ only has the solutions of $e^{-x}$ because $e^x$ is not integrable on $(0, \infty)$, and
+		\item $H^1(\R)$ has only the zero function because both functions become unbounded as we approach negative and positive infinity, respectively. 
+	\end{itemize}
+Thus, the basis for each of the spaces are precisely the span of the functions mentioned above.
+
+
+\medskip \hrule \hrule \medskip
+%---------------------------------------------------------
+
+
+% PROBLEM 3
+%---------------------------------------------------------
+\subsection*{Problem 3.}
+Let $v(x)=\log \log \frac{1}{r}$ for $r = \norm{x}{2}$, $x \in \R^2$. Show [with calculations and estimates] that $v \in H^1(B(0;\beta))$ for any $\beta<1$, but that $v$ is unbounded as $x \to 0$. \\
+
+({\bf Note:} This shows that it is not true that $H^1(\Omega) \subset C(\overline{\Omega})$ for $\Omega\subset \R^d$ when $d>1$, even if this results holds in $d=1$ Compare to [II.Pbm.2.2]). \\
+\medskip \hrule \medskip
+
+\noindent{\bf Solution:} I am not sure where to go from here.
+
+\medskip \hrule \hrule \medskip
+%---------------------------------------------------------
+
+
+% PROBLEM 4
+%---------------------------------------------------------
+\subsection*{Problem 4: {\bf Extra.}} (Synthesis from reading Chapters I, II; can be done by a group of any size. Please provide the names of those in the group and submit only one solution for all group members.)
+
+Consider the vector spaces
+%%
+\begin{align*}
+C^{\infty}(\R), 
+C_0^{\infty}(\R),C^1(0,1),C^1[0,1],C_0(0,1),C[0,1], H_0^1(\R),H^1(\R),L^2(0,1),H^1(0,1),H_0^1(1).
+\end{align*}
+%%
+and consider the norms that are relevant such as ``$sup$'', ``$L^2$'', and more. 
+
+For these (possibly normed) spaces, write at least 10 statements involving the keywords ``complete'', ``not complete'', ``completion'',``dense'', ``compact'' (the last two referring to the inclusions$\equiv$embeddings between spaces). If writing more, include these on at most 1 page total. 
+
+Annotate the results with references to the results in the book; no proofs are needed. (Briefness will be appreciated: e.g., one line per each of the eleven spaces suffices to state whether this space embeds in any of the others (and how): start with the largest of these spaces!).
+\medskip \hrule \medskip
+
+\noindent{\bf Solution:}
+
+%---------------------------------------------------------
+
+
+% BIBLIOGRAPHY
+%---------------------------------------------------------
+\begin{thebibliography}{9}
+\bibitem{Showalter} Ralph Showalter, \emph{Hilbert Space Methods in Partial Differentia;l Equations}, Dover, (2010)
+
+\bibitem{listings} CTAN archive of the LaTeX package {\tt listings} \url{https://ctan.org/pkg/listings}
+\end{thebibliography}
+
+\end{document}
