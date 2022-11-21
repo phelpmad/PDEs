@@ -1,0 +1,190 @@
+\documentclass[12pt]{amsart}
+\usepackage{graphicx,url,xcolor}
+%
+\usepackage{fullpage} % changes the margin
+\usepackage[normalem]{ulem} % gives fancy underline 
+\usepackage{enumerate} % extra easy options to customize lists
+% Listings and such is useful for numerical analysis codes
+
+\usepackage{comment,framed} % less common but useful
+% Your macros: you can also keep them in a separate file
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\abs}[1]{\mid\!#1\!\mid}
+\newcommand{\norm}[2]{\mid\!\mid\! #1\!\mid\!\mid\!_{#2}}
+\newcommand{\eqdef}{:=}
+\newcommand{\eps}{\varepsilon}
+%
+\newcommand{\mpcomment}[1]{{\color{red}\bf[MP: #1]}}
+%
+
+%%
+%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%% HEADER
+\noindent
+%%
+\textbf{MTH 627 (Prof.~M.~Peszynska) Problem set 3. } \hfill \textbf{Madison Phelps}\\
+\hfill Date: \today\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\medskip
+\hrule
+\hrule
+\medskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEMS
+\noindent
+\textcolor{red}{Include  proper citations including online resources as in  \cite[Chap.I, Theorem 1.1]{Showalter}. 
+} 
+\\
+\textcolor{blue}{For other results, state these.}\\
+Collaborators: Tyler and Praveeni\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\medskip
+\hrule
+\hrule
+\medskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Problem 1}
+Problem \#1 was chosen.
+\medskip
+\hrule
+\medskip
+%
+\noindent{\bf Solution:}
+%%%%%%%%%%%%%%
+ Let $\varepsilon > 0 $ be chosen such that $0 < \varepsilon \ll 1$. Choose $c = \varepsilon^2(1-\varepsilon) > 0$. We will show that the given $c$ works. Take any $u\in H^1(0,1)$ and by the hint on the problem we see that
+ 	\[ \int_0^x (u')^2 = u^2(x) - u^2(0) \]
+by the fundamental theorem of calculus on $(0,1)$ and implies,
+	\[ u^2  \leq u^2(0) + \int_0^1 2uu'\]
+for all $x\in(0,1)$ and given that $(u')^2 = 2uu'$. Then, since $\varepsilon \neq 0$, we may multiply by one and use Young's Inequality to obtain the following estimates
+	\begin{align*}
+		u^2 & \leq u^2(0) + \int_0^1 \left(2\varepsilon u\cdot \frac{1}{\varepsilon} u'\right)\\
+			& \leq u^2(0) + \int0^1 \left( \varepsilon^2 u^2 + \frac{1}{\varepsilon^2} u' \right)\\
+			& = u^2(0) + \varepsilon^2 \int_0^1 u^2 + \frac{1}{\varepsilon^2}\int_0^1 u' \\
+			& = u^2(0) + \varepsilon^2 || u ||_{L^2(0,1)}^2 + \frac{1}{\varepsilon^2} || u' ||_{L^2(0,1)}^2.
+	\end{align*}
+Manipulating the above and integrating on $(0,1)$ gives
+	\[ || u ||_{L^2(0,1)}^2 - \varepsilon^2 || u ||_{L^2(0,1)}^2 \leq u^2(0) +  \frac{1}{\varepsilon^2} || u' ||_{L^2(0,1)}^2\]
+and
+\[ \varepsilon^2(1 - \varepsilon^2) || u ||_{L^2(0,1)}^2 \leq \varepsilon^2 u^2(0) +  || u' ||_{L^2(0,1)}^2 \leq  u^2(0) + || u' ||_{L^2(0,1)}^2\]
+because $\varepsilon \ll 1$. Therefore, there exists some $ c = \varepsilon^2(1-\varepsilon) > 0$ such that 
+	\[ c \int_0^1 u^2  = \varepsilon^2(1 - \varepsilon^2) || u ||_{L^2(0,1)}^2  \leq  u^2(0) + || u' ||_{L^2(0,1)}^2\]
+for any $u\in H^1(0,1)$.
+
+%%%%%%%%%%%%%%
+\medskip
+\hrule
+\hrule
+\medskip
+%%
+\subsection*{Problem 2}
+Problem \#5 chosen.
+\\
+\medskip
+\hrule
+\medskip
+%
+\noindent{\bf Solution:}\\
+%%%%%%%%%%%%%%
+
+Assume that $c:\Omega\to\mathbb R$ is a function that is bounded on $\Omega$ such that 
+\begin{equation}\label{eqn:cconstraint}
+	\beta_c \leq c(x) \leq \beta_b \text{ for all }x\in\Omega.
+\end{equation}
+Through discussions, we found that the most general constraint to place on 
+	\begin{equation}\label{eqn:k}
+		K = \begin{bmatrix}
+			k_{11}(x) & k_{12}(x)\\
+			k_{21}(x) & k_{22}(x)
+		\end{bmatrix}
+	\quad\quad \text{ for } k_{ij}:\Omega \to \R
+	\end{equation}
+is that there needs to exist some constant $k_c$ and $k_b$ that are real, nonzero, and positive such that 
+	\begin{equation}\label{eqn:kconstraint}
+		k_c || x ||_V = k_c x^Tx \leq x^T K x \leq k_b x^T x = k_b || x ||_V
+	\end{equation}
+holds for all nonzero $x\in\Omega$ and, which in doing so implies that $K$ is symmetric positive definite.
+
+\noindent\textbf{Coercive:} Using the left hand side of the inequalities in Equations (\ref{eqn:kconstraint}) and (\ref{eqn:cconstraint}), we compute
+\begin{align*}
+	|a(u,u)| & = \left| \int_\Omega (K\nabla u)\cdot \nabla u + \int_\Omega c(x) u^2 \right|\\
+		   & \geq \left| k_c \int_\Omega \left(\nabla u\cdot\nabla u\right) + \beta_c \int_\Omega u^2 \right|\\
+		    & \geq k_c ||\partial u||_{L^2(0,1)}^2 + \beta_c || u||_{L^2(0,1)}^2
+\end{align*}
+where we have obtained the last inequality because we have assumed that $(K\nabla u)\cdot \nabla u = \nabla u^T K \nabla u$ and, $\nabla u\in H^1(0,1)$ and $\nabla u\in H_0^1(0,1)$. If we take the constant of coercivity to be $c = \min\{ k_c, \beta_c\} > 0$, then $|a(u,u)| \geq c || u ||_{H^1(0,1)}^2$ which shows that $a$ is coercive. Otherwise, if $u\in H_0^1(0,1)$ and $\beta_c > k_c > 0$ then,  
+	\[|a(u,u)| \geq k_c ||\partial u||_{L^2(0,1)}^2 + \beta_c || u||_{L^2(0,1)}^2 \geq k_c ||\partial u||_{L^2(0,1)}^2 = k_c ||u||_{H_0^1(0,1)}^2\]
+where we take the constant of coercivity to be $c = k_c$ on $H_0^1(0,1)$. In either case, we have shown that $a$ is coercive, as desired. There are a few cases that I thought up of in class for which are weaker assumptions that shows $a(\cdot,\cdot)$ is coersive on $H^1(0,1)$ and $H_0^1(0,1)$. The proofs will be at the end of the problem. \\
+ 
+ \noindent\textbf{Bounded:}\\
+ 
+ Similarly, assume the right hand side of the inequalities in Equations (\ref{eqn:kconstraint}) and (\ref{eqn:cconstraint}). For any $u\in V$ we have that 
+ 
+ \begin{align*}
+	|a(u,u)| & = \left| \int_\Omega (K\nabla u)\cdot \nabla u + \int_\Omega c(x) u^2 \right|\\
+		   & \leq \left| k_b \int_\Omega \left(\nabla u\cdot\nabla u\right) + \beta_b \int_\Omega u^2 \right|\\
+		    & \leq k_b ||\partial u||_{L^2(0,1)}^2 + \beta_b || u||_{L^2(0,1)}^2
+\end{align*}
+and take $b = \max\{k_b, \beta_b\} > 0$ we see that 
+	\[ | a(u,u) | \leq b \left( ||\partial u||_{L^2(0,1)}^2 + || u ||_{L^2(0,1)}^2 \right) =  b || u ||_{H^1(0,1)}^2 \]
+for all $u\in H^1(0,1)$ and otherwise, if $u\in H_0^1(0,1)$ then we may use the Poincare Friedrich's inequality to obtain,
+	\[ | a(u,u) | \leq b \left( ||\partial u||_{L^2(0,1)}^2 + || u ||_{L^2(0,1)}^2 \right) \leq b \left( ||\partial u||_{L^2(0,1)}^2 + C_{\small PF}|| \partial u ||_{L^2(0,1)}^2 \right) \leq b' || u ||_{H_0^1(0,1)}^2 \]
+with a different bounding cosntant $b' =  \max\{k_b, \beta_b\}( 1 + C_{\small PF})$.\\
+
+Therefore with the assumptions given in (\ref{eqn:kconstraint}) and (\ref{eqn:cconstraint}), we have shown that $a$ is coercive on both spaces.\\
+
+\medskip
+\hrule
+\hrule
+\medskip 
+
+\noindent\textbf{Solution for weaker conditions on $K$ that show the coercive property:}\\
+
+There are a few weaker conditions that we could place on $K$ to ensure that $a(\cdot,\cdot)$ is coersive. If we further assume that $u\in C^1(\Omega)$, then we can apply the Poincare Inequality such that 
+        \[|| u ||_{L^2}^2 \leq C_{\text{\tiny PF}}||\partial u||_{L^2}^2.\]
+
+If $u\in H_0^1(\Omega)$, then we have that 
+	\begin{equation}\label{eqn:1}
+		||\partial u ||_{L^2}^2 \leq || \partial u ||_{L^2}^2 + || u ||_{L^2}^2 \leq || \partial u ||_{L^2}^2 + C_{\text{\tiny PF}}||\partial u||_{L^2}^2
+	\end{equation}
+which implies that 
+	\begin{equation}\label{eqn:2}
+		\frac{1}{1 + C_{\text{\tiny PF}}} ||\partial u||_{L^2}^2 \leq ||\partial u||_{L^2}^2
+	\end{equation}
+Now, $a(\cdot,\cdot)$ is said to be coersive if there exists some constant $c$ such that $|a(u,u)| \geq c || u||_V$. Hence, we consider the following,
+\begin{align}\label{eqn:coersive}
+	|a(u,u)| & = \left| \int_\Omega (K\nabla u)\cdot \nabla u + \int_\Omega c(x) u^2 \right|
+\end{align}
+and we have the following cases to show that $a(\cdot, \cdot)$ is coersive on $V = H^1(\Omega)$ and $V = H_0^1(\Omega)$.\\
+
+\noindent \textbf{Case 1:} Assume that $K$ is a diagonal matrix and $k_1(x)$ and $k_2(x)$ are functions that are bounded below such that $k = \inf_{x\in\Omega}\{k_1(x),k_2(x)\}>0$.%\footnote{We also note that $k = 0$ with respect to the $H_0^1$ norm on $\Omega$ if $\Omega$ is either bounded or unbounded. However, the proof of $a(\cdot,\cdot)$ being coersive with respect to the $H^1$ norm we should assume that $k > 0$ since $||\partial u ||_{L^2}^2\geq 0$.} 
+ Assume $c:\Omega\to\R$ is a function that is bounded below by some $\beta\in\R$. Then we estimate using Equation \ref{eqn:coersive} and find that
+\begin{align}
+	|a(u,u)| & = \left| \int_\Omega (K\nabla u)\cdot \nabla u + \int_\Omega c(x) u^2 \right|\nonumber\\
+		    & = \left| \int_\Omega \left(k_1(x) (u_x)^2 + k_2(x)(u_y)^2\right) + \int_\Omega c(x) u^2 \right|\nonumber\\
+		    & \geq  \left| k \int_\Omega \left((u_x)^2 + (u_y)^2\right) + \beta \int_\Omega u^2 \right|\nonumber\\
+		    & \geq \left| k \int_\Omega \left(\nabla u\cdot\nabla u\right) + \beta \int_\Omega u^2 \right|\nonumber\\
+		    & \geq k ||\partial u||_{L^2}^2 + \beta || u||_{L^2}^2\label{eqn:3}
+\end{align}
+If $u\in H_0^1(\Omega)$, then we use Equation \ref{eqn:2} and conclude that 
+	\[|a(u,u) |\geq \left(k + \frac{\beta}{1 + C_{\tiny PF}} \right) ||\partial u||_{L^2}^2 
+				= \left(k + \frac{\beta}{1 + C_{\tiny PF}} \right)|| u||_{H_0^1(\Omega)}^2\]
+which further assumes that $k > \frac{\beta}{1 + C_{\tiny PF}}$ since $\beta$ could be negative. On the other side, if $u\in H^1(\Omega)$ we use line (\ref{eqn:3}) from above and we set $c = \min\{k,\beta\}$ to conclude that 
+\[ |a(u,u)| \geq \min\{k,\beta\}\left( ||\partial u||_{L^2}^2 + || u||_{L^2}^2\right) = c || u ||_{H^1(\Omega)}^2.\]\\
+
+\noindent\textbf{Case 2:} If $K$ is such that $k_{11}(x)$ and $k_{22}(x)$ are functions that are bounded below such that $k = \inf_{x\in\Omega}\{k_{11}(x),k_{22}(x)\}$ and $k_{12}(x) = -k_{21}(x)$ and $c$ is bounded below by $\beta$, then we can use the same conclusions in Case 1 because $(K\nabla u)\cdot \nabla u $ becomes
+ \[ k_{11}(x)(u_x)^2 + (k_{12}(x) + k_{21}(x)) u_xu_y + k_{22}(x)(u_y)^2 = k_{11}(x)(u_x)^2 + k_{22}(x)(u_y)^2\]
+ and we may conclude that $a$ is coersive. 
+%%%%%%%%%%%%%%
+\medskip
+\hrule
+\hrule
+\medskip
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{9}
+\bibitem{Showalter} Ralph Showalter, \emph{Hilbert Space Methods in Partial Differentia;l Equations}, Dover, (2010)
+
+\bibitem{listings} CTAN archive of the LaTeX package {\tt listings} \url{https://ctan.org/pkg/listings}
+\end{thebibliography}
+
+\end{document}
